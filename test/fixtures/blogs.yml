@@ -1,0 +1,13 @@
+one:
+  title: MyString
+  content: MyString
+  author: 
+  category: 
+  members_only: false
+
+two:
+  title: MyString
+  content: MyString
+  author: 
+  category: 
+  members_only: false

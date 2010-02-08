@@ -1,0 +1,18 @@
+<% form_for @blog do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title, "Titel" %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :content, "Inhalt"%><br />
+    <%= textile_editor :blog, :content, :rows => "5", :class => "new_blog_entry" %>
+  </p>
+  <p>
+    <%= f.label :category, "Kategorie:" %>
+    <%= collection_select :blog, :category_id, Category.find(:all), :id, :name %>
+    | <%= f.check_box :members_only %><%= f.label :members_only, "Nur für Members sichtbar?" %>
+    | <%= f.submit "Eintragen" %>
+  </p>
+  <%= textile_editor_initialize -%>
+<% end %>

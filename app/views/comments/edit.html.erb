@@ -1,0 +1,8 @@
+<% title "Kommentar bearbeiten" %>
+
+<%= render :partial => 'form' %>
+
+<% content_for :user_menu do %>
+  <%= link_to "Zum Beitrag", @comment.blog %> |
+  <%= link_to "Zur Startseite", root_path %>
+<% end %>

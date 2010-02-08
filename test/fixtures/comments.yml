@@ -1,0 +1,13 @@
+one:
+  from: 
+  subject: MyString
+  content: MyString
+  blog: 
+  parent: 
+
+two:
+  from: 
+  subject: MyString
+  content: MyString
+  blog: 
+  parent: 

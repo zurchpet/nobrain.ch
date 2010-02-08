@@ -1,0 +1,7 @@
+<%= render :partial => "shoutboxes/form", :locals => {:shoutbox => Shoutbox.new} %>
+
+<% for shoutbox in @shoutboxes %>
+  <% content_tag :div, :class => "shout_entry", :id => "shoutbox_#{shoutbox.id}" do%>
+    <strong><%= shoutbox.user.username %>:</strong><%= shoutbox.content %>
+  <% end %>
+<% end %>

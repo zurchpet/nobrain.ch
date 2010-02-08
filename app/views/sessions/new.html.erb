@@ -1,0 +1,19 @@
+<% title "Anmelden" %>
+
+<p>Noch nicht registriert? <%= link_to "Registrieren!", signup_path %></p>
+
+<% form_tag sessions_path do %>
+  <p>
+    <%= label_tag :login, "Benutzername oder E-Mailadresse" %><br />
+    <%= text_field_tag :login, params[:login] %>
+  </p>
+  <p>
+    <%= label_tag :password, "Passwort" %><br />
+    <%= password_field_tag :password %>
+  </p>
+  <p><%= submit_tag "Anmelden" %></p>
+<% end %>
+
+<% content_for :all_menu do %>
+<%= link_to "Abbrechen", root_url %>
+<% end %>

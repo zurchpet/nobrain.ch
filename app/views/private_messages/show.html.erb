@@ -1,0 +1,18 @@
+<% title "Private Message" %>
+
+<span class="pm_sender">
+  <strong>Von:</strong>
+  <%=h @private_message.from.username %>
+</span>
+<br />
+<span class="pm_subject">
+  <%=h @private_message.subject %>
+</span>
+<pre class="pm_content">
+  <%=h @private_message.content %>
+</pre>
+<% content_for :user_menu do %>
+  <%= link_to "Beantworten/Weiterleiten", reply_private_message_path(@private_message) %> |
+  <%= link_to "Löschen", @private_message, :confirm => 'Bist du sicher?', :method => :delete %> |
+  <%= link_to "Alle Anzeigen", private_messages_path %>
+<% end %>

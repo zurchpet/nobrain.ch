@@ -1,0 +1,18 @@
+<% comment = @comment if @comment %>
+<% form_for comment do |f| %>
+  <%= f.error_messages %>
+  <% if params[:blog_id] %>
+    <%= hidden_field_tag :blog_id, params[:blog_id] %>
+  <% else %>
+    <%= hidden_field_tag :blog_id, @blog.id %>
+  <% end %>
+  <p>
+    <%= f.label :subject, "Betreff" %><br />
+    <%= f.text_field :subject %>
+  </p>
+  <p>
+    <%= f.label :content, "Nachricht" %><br />
+    <%= f.text_area :content, :cols => 80, :rows => 10 %>
+  </p>
+  <p><%= f.submit "Kommentieren" %></p>
+<% end %>

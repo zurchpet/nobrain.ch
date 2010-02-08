@@ -1,0 +1,16 @@
+<% if logged_in? %>
+  <% link_to private_messages_path do %>
+    <div id="private_messages">
+      <div id="pm_count"><%= PrivateMessage.count(:all, :conditions => {:new => true, :to_id => current_user.id}) %></div>
+      <div id="pm_link">Nachrichten</div>
+    </div>
+  <% end %>
+  <div id="shoutbox">
+    <%= render :partial => "shoutboxes/shoutbox" %>
+  </div>
+<% else %>
+  <div id="why_register">
+    Wenn du dich regisrierst und anmeldest erscheinen hier die privaten Nachrichten und die Shoutbox.
+    <p class="why_register"><%= link_to "Registrieren", signup_path %> oder <%= link_to "Anmelden", login_path %></p>
+  </div>
+<% end %>

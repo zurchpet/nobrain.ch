@@ -1,0 +1,34 @@
+<% title "NoBrain.ch" %>
+<div id="blogs_content">
+  <% for blog in @blogs %>
+    <% content_tag_for :div, blog do %>
+      <h3 class ="blog_title"><%=h blog.title %></h3>
+      <span class ="blog_author">Von: <%=h blog.user.username %></span> <span class ="blog_date"><%=h blog.created_at.strftime("Am: %d.%m.%Y Um: %H:%M Uhr") %></span>
+      <div class="blog_content"><%= RedCloth.new(blog.content).to_html %></div>
+      <span class="blog_category">Kategorie: <%=h blog.category.name %></span>
+      <div class="blog_controls">
+        <span class="blog_read_more">
+          <%= link_to "Mehr", blog %>
+          <% if logged_in? %>
+            | <%= link_to "Kommentieren", blog_path(blog, :anchor => "new_comment") %>
+          <% end %>
+        </span>
+        <% if logged_in? && (blog.user == current_user || current_user.username == ("Raindancer" || "Epitome")) %>
+          | <span class="blog_edit"><%= link_to "Bearbeiten", edit_blog_path(blog) %></span>
+          | <span class="blog_destroy"><%= link_to "Löschen", blog, :confirm => "Bist du sicher, dass du den Beitrag \"#{blog.title}\" löschen möchtest?", :method => :delete %></span>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div id="right_menu">
+  <%= render :partial => "shared/right_menu" %>
+</div>
+<div id="pagination"><%= will_paginate @blogs %></div>
+<% content_for :user_menu do %>
+  <%= link_to "Neuer Beitrag", new_blog_path %>
+  | <%= link_to "Neue private Nachricht", new_private_message_path %>
+<% end %>
+<% content_for :admin_menu do %>
+  | <%= link_to "Neue Kategorie", new_category_path %>
+<% end %>

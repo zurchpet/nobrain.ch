@@ -1,0 +1,29 @@
+<% title "Private Messages" %>
+
+<table id="pm-table">
+  <tr>
+    <th class="pm_from">Von</th>
+    <th class="pm_subject">Betreff</th>
+    <th class="pm_actions">Aktionen</th>
+  </tr>
+  <% for private_message in @private_messages %>
+    <%
+      if private_message.new
+        class_for_new = "new_message"
+      else
+        class_for_new = "read_message"
+      end
+    %>
+      <tr class="<%= class_for_new %>">
+      <td><%=h private_message.from.username %></td>
+      <td><%= link_to(h(private_message.subject), private_message) %></td>
+      <td><%= link_to "Löschen", private_message, :confirm => 'Die Nachricht Löschen?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<% content_for :user_menu do %>
+  <%= link_to "Startseite", root_path %>
+  | <%= link_to "Neue Privatnachricht", new_private_message_path %>
+  | <%= link_to "Gesendete Nachrichten", sent_private_messages_path %>
+<% end %>

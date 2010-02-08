@@ -1,0 +1,7 @@
+<% title "Neuer Beitrag" %>
+
+<%= render :partial => 'form' %>
+
+<% content_for :user_menu do %>
+  <%= link_to "Abbrechen", blogs_path %>
+<% end %>

@@ -1,0 +1,19 @@
+<% form_for @private_message do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :to, "An" %>
+    <%= collection_select :private_message, :to_id, User.find(:all), :id, :username %>
+  </p>
+  <p>
+    <%= f.label :subject, "Betreff" %>
+    <%= f.text_field :subject %>
+  </p>
+  <p>
+    <%= f.label :content, "Inhalt" %><br />
+    <%= f.text_area :content, :class => "new_private_message" %>
+  </p>
+  <% if @replied_message %>
+    <%= hidden_field_tag 'reply_id', @replied_message.id %>
+  <% end %>
+  <p><%= f.submit "Abschicken" %></p>
+<% end %>

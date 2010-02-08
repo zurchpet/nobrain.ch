@@ -1,0 +1,16 @@
+<% title "Shoutbox" %>
+
+<p>
+  <strong>User:</strong>
+  <%=h @shoutbox.user %>
+</p>
+<p>
+  <strong>Content:</strong>
+  <%=h @shoutbox.content %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_shoutbox_path(@shoutbox) %> |
+  <%= link_to "Destroy", @shoutbox, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", shoutboxes_path %>
+</p>

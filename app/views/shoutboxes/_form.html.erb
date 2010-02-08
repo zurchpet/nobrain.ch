@@ -1,0 +1,8 @@
+<% form_for shoutbox do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :content, "Shout" %><br />
+    <%= f.text_field :content, :id => "input_shoutbox" %>
+  </p>
+  <p><%= f.submit "Absenden" %></p>
+<% end %>

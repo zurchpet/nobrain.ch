@@ -1,0 +1,36 @@
+<% title "Beitrag - #{@blog.title}" %>
+
+<% content_tag :div, :id => "blog" do %>
+  <span class ="blog_author">Von: <%=h @blog.user.username %></span> <span class ="blog_date"><%=h @blog.created_at.strftime("Am: %d.%m.%Y Um: %H:%M") %></span>
+  <div class="blog_content"><%= RedCloth.new(@blog.content).to_html %></div>
+  <span class="blog_category">Kategorie: <%=h @blog.category.name %></span>
+<% end %>
+<h3>Kommentare:</h3>
+<% for comment in @blog.comments do %>
+    <span class="comment_in_blog_title"><%= comment.subject %></span><br />
+    <span class="comment_in_blog_sender">Von: <%= comment.from.username unless comment.from.nil? %></span><br />
+    <pre class="comment_in_blog_content"><%= comment.content %></pre><br />
+    <% if logged_in? %>
+      <% if((comment.from == current_user) || (current_user.username == ("Raindancer" || "Epitome"))) %>
+        <div class="comment_controls">
+          <%= link_to "Bearbeiten", edit_comment_path(comment, :blog_id => @blog.id) %>
+          | <%= link_to "Löschen", comment, :confirm => "Bist du sicher, dass du den Kommentar \"#{comment.subject}\" löschen möchtest?", :method => :delete %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% if logged_in? %>
+    <h4 id="new_comment">Neuer Kommentar</h4>
+    <%= render :partial => "comments/form", :locals => {:comment => Comment.new} %>
+  <% end %>
+
+  <% content_for :all_menu do %>
+    <%= link_to "Zurück", blogs_path %>
+  <% end %>
+
+  <% content_for :user_menu do %>
+    <% if logged_in? && (@blog.user == current_user || current_user.username == ("Raindancer" || "Epitome")) %>
+      | <%= link_to "Bearbeiten", edit_blog_path(@blog) %>
+      | <%= link_to "Löschen", @blog, :confirm => "Bist du sicher, dass du den Beitrag \"#{@blog.title}\" löschen möchtest?", :method => :delete %>
+    <% end %>
+  <% end %>

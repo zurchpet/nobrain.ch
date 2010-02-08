@@ -1,0 +1,15 @@
+one:
+  from: 
+  to: 
+  subject: MyString
+  content: MyString
+  new: false
+  replyed_with: 
+
+two:
+  from: 
+  to: 
+  subject: MyString
+  content: MyString
+  new: false
+  replyed_with: 

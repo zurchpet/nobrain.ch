@@ -1,0 +1,21 @@
+<% title "Kommentar" %>
+
+<p>
+  <strong>Von:</strong>
+<%=h @comment.from.username %>
+</p>
+<p>
+  <strong>Betreff:</strong>
+  <%=h @comment.subject %>
+</p>
+<pre>
+  <%=h @comment.content %>
+</pre>
+
+<% content_for :user_menu do %>
+  <% if((@comment.from == (current_user)) || (current_user.username == ("Raindancer" || "Epitome")) ) %>
+    <%= link_to "Bearbeiten", edit_comment_path(@comment) %> |
+    <%= link_to "Löschen", @comment, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
+  <%= link_to "Zum Bericht", @comment.blog %>
+<% end %>

@@ -1,0 +1,7 @@
+<% title "Neue Privatenachricht" %>
+
+<%= render :partial => 'form' %>
+
+<% content_for :user_menu do %>
+<%= link_to "Abbrechen", private_messages_path %>
+<% end %>
