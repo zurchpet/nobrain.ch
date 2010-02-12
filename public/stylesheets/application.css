@@ -300,6 +300,7 @@ div#private_messages {
 
 body#private_messages tr.new_message {
     background-color:#FFF;
+    font-weight: bold;
 }
 
 body#private_messages tr.read_message {

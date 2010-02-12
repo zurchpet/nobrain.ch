@@ -15,11 +15,11 @@ class BlogsController < ApplicationController
   
   def new
     @blog = Blog.new
-    @blog.user = current_user
   end
   
   def create
     @blog = Blog.new(params[:blog])
+    @blog.user = current_user
     if @blog.save
       flash[:notice] = "Successfully created blog."
       redirect_to blogs_url

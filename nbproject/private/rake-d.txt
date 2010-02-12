@@ -41,10 +41,15 @@ doc\:clobber_plugins=Remove plugin documentation
 doc\:clobber_rails=Remove rdoc products
 doc\:guides=Generate Rails guides
 doc\:plugins=Generate documentation for all installed plugins
+doc\:plugins\:easy-fckeditor=Generate documentation for the easy-fckeditor plugin
+doc\:plugins\:textile_editor_helper=Generate documentation for the textile_editor_helper plugin
 doc\:rails=Build the RDOC HTML Files
 doc\:reapp=Force a rebuild of the RDOC files
 doc\:rerails=Force a rebuild of the RDOC files
 environment=
+fckeditor\:download=Update the FCKEditor code to the latest nightly build
+fckeditor\:install=Install the FCKEditor components
+fckeditor\:uninstall=Uninstall the FCKEditor components
 gems=List the gems that this rails application depends on
 gems\:base=
 gems\:build=Build any native extensions for unpacked gems
@@ -83,6 +88,8 @@ test\:profile=Run tests for profiledb:test:prepare / Profile the performance tes
 test\:recent=Run tests for recentdb:test:prepare / Test recent changes
 test\:uncommitted=Run tests for uncommitteddb:test:prepare / Test changes since last checkin (only Subversion and Git)
 test\:units=Run tests for unitsdb:test:prepare / Run the unit tests in test/unit
+textile_editor_helper\:install=Installs required assets
+textile_editor_helper\:remove=Removes assets for the plugin
 time\:zones\:all=Displays names of all time zones recognized by the Rails TimeZone class, grouped by offset. Results can be filtered with optional OFFSET parameter, e.g., OFFSET=-6
 time\:zones\:local=Displays names of time zones recognized by the Rails TimeZone class with the same offset as the system local time
 time\:zones\:us=Displays names of US time zones recognized by the Rails TimeZone class, grouped by offset. Results can be filtered with optional OFFSET parameter, e.g., OFFSET=-6
